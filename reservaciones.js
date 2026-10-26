@@ -1,17 +1,14 @@
 "use strict";
 // Organización de datos
 Object.defineProperty(exports, "__esModule", { value: true });
-// Arreglo tipado: solo acepta objetos con la forma de Reservacion.
-// 4 reservaciones: ids distintos, 2 interior y 2 terraza,
-// con 5+ personas en los ids 2 (terraza) y 3 (interior).
+//Datos iniciales: arreglo de reservaciones
 const reservaciones = [
     { id: 1, cliente: "Ana Martínez", personas: 2, zona: "interior" },
     { id: 2, cliente: "Carlos López", personas: 6, zona: "terraza" },
     { id: 3, cliente: "María Hernández", personas: 5, zona: "interior" },
     { id: 4, cliente: "Luis Ramírez", personas: 3, zona: "terraza" },
 ];
-// ---------- 5. FUNCIÓN TIPADA ----------
-// - Nombre que describe su responsabilidad: atender una reservación.
+// =====Función que atiende las reservaciones=====
 // - Recibe el arreglo como parámetro (tipado).
 // - Retorno explícito: la reservación atendida, o undefined si la lista está vacía.
 function atenderReservacion(lista) {
@@ -24,19 +21,18 @@ function atenderReservacion(lista) {
     }
     return atendida;
 }
-// ---------- DATOS INICIALES ----------
-console.log("=== 1. Datos iniciales ===");
+console.log("=== Datos iniciales ===");
 console.log(reservaciones);
-// ---------- 2. REGISTRA NUEVAS RESERVACIONES ----------
-console.log("\n=== 2. Registrar nuevas reservaciones ===");
-// Normal: push agrega AL FINAL
+// ---------- REGISTRA NUEVAS RESERVACIONES ----------
+console.log("\n=== 1. Registrar nuevas reservaciones ===");
+// Reservación normal
 reservaciones.push({ id: 5, cliente: "Sofía Castillo", personas: 4, zona: "interior" });
-// Prioritaria: unshift agrega AL INICIO
+// Reservación prioritaria. Se agrega al principio
 reservaciones.unshift({ id: 6, cliente: "Elena Flores (prioritaria)", personas: 2, zona: "terraza" });
 console.log("Lista antes de atender (la prioritaria debe ir primero):");
 console.log(reservaciones);
-// ---------- 3. ATIENDE UNA RESERVACIÓN (usando la función) ----------
-console.log("\n=== 3. Atender una reservación ===");
+// ---------- ATIENDE UNA RESERVACIÓN -----------
+console.log("\n=== 2. Atender una reservación ===");
 // 1.ª llamada: lista con datos
 const atendida = atenderReservacion(reservaciones);
 console.log("Resultado guardado:", atendida);
@@ -44,7 +40,7 @@ console.log("Resultado guardado:", atendida);
 const listaVacia = [];
 atenderReservacion(listaVacia);
 // ---------- 4. BUSCA Y CONSULTA ----------
-console.log("\n=== 4. Buscar y consultar ===");
+console.log("\n=== 3. Buscar y consultar ===");
 // Búsqueda por id: caso que SÍ existe
 const idExistente = 2;
 const encontrada = reservaciones.find((r) => r.id === idExistente);
@@ -75,7 +71,7 @@ else {
     console.log("No hay reservaciones de terraza con 5 o más personas.");
 }
 // ---------- 6. COMPRUEBA EL ESTADO FINAL ----------
-console.log("\n=== 6. Estado final ===");
+console.log("\n=== 4. Estado final ===");
 console.log("Reservaciones pendientes:", reservaciones);
 console.log("Cantidad pendiente:", reservaciones.length);
 console.log("Coincidencias del filtro:", terrazaGrandes.length);
